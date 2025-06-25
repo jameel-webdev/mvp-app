@@ -1,0 +1,53 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "jsx": "react-native", // Or "react" if you prefer, but "react-native" is common for RN projects
+    "esModuleInterop": true, // Allows default imports from commonjs modules
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "forceConsistentCasingInFileNames": true, // Disallow inconsistently-cased references to the same file
+    "noEmit": true, // Babel handles transpilation, TypeScript is for type checking
+    "resolveJsonModule": true, // Allows importing JSON files
+    "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/types" // If you have custom global d.ts files in src/types
+    ],
+    "baseUrl": ".",
+    "paths": {
+      // Optional: for absolute imports if you configure Babel module resolver
+      "@components/*": ["src/components/*"],
+      "@screens/*": ["src/screens/*"],
+      "@services/*": ["src/services/*"],
+      "@navigation/*": ["src/navigation/*"],
+      "@types/*": ["src/types/*"],
+      "@utils/*": ["src/utils/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@assets/*": ["assets/*"]
+    },
+    // Add any other specific compiler options you need
+    "target": "esnext", // Specify ECMAScript target version
+    "module": "esnext", // Specify module code generation
+    "lib": ["esnext", "dom"], // Standard library files
+    "moduleResolution": "bundler",
+    "noImplicitAny": true, // Raise error on expressions and declarations with an implied 'any' type.
+    "noUnusedLocals": true, // Report errors on unused locals.
+    "noUnusedParameters": true, // Report errors on unused parameters.
+    "removeComments": false // Keep comments in the output (though noEmit is true)
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "*.ts", // For App.ts or other root TS files
+    "*.tsx",
+    "index.js", // Include index.js if it's your entry point and you want TS to be aware
+    "env-example"
+  ],
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+    // Add any other paths to exclude from compilation
+  ]
+}
